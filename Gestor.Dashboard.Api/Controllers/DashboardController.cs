@@ -27,5 +27,11 @@ namespace Gestor.Dashboard.Api.Controllers
         {
             return await _mediator.Send(request);
         }
+
+        [HttpGet("cities")]
+        public async Task<DashboardItensResponse> GetByCity([FromQuery] GetTicketsByCityRequest request)
+        {
+            return await _mediator.Send(request);
+        }
     }
 }
