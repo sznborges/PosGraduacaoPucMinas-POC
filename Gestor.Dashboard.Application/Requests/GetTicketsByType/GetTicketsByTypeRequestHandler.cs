@@ -16,11 +16,22 @@ namespace Gestor.Dashboard.Application.Requests.GetTicketsByType
 
         public async Task<DashboardItensResponse> Handle(GetTicketsByTypeRequest request, CancellationToken cancellationToken)
         {
-            var sql = "SELECT Type Label, count(1) Value FROM TicketReport GROUP BY type";
+            var sql = @"SELECT Type Label, count(1) Value 
+FROM TicketReport 
+WHERE FinishDate BETWEEN @startRangeDate and @endRangeDate
+GROUP BY type";
+
+            var parameters = new
+            {
+                startRangeDate = request.StartRangeDate,
+                endRangeDate = request.EndRangeDate
+            };
+
+            var command = new CommandDefinition(sql, parameters);
 
             using (var connection = await _openConnectionAsync())
             {
-                var results = await connection.QueryAsync<DashboardItem>(sql);
+                var results = await connection.QueryAsync<DashboardItem>(command);
 
                 return new DashboardItensResponse
                 {
