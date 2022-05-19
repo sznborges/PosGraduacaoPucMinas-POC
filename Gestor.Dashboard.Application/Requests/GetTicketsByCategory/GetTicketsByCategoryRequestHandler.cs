@@ -1,25 +1,26 @@
 ﻿using Dapper;
 using Gestor.Dashboard.Application.Contracts;
+using Gestor.Dashboard.Application.Requests.GetTicketsByType;
 using MediatR;
 using System.Data;
 
-namespace Gestor.Dashboard.Application.Requests.GetTicketsByType
+namespace Gestor.Dashboard.Application.Requests.GetTicketsByCategory
 {
-    public class GetTicketsByTypeRequestHandler : IRequestHandler<GetTicketsByCategoryRequest, DashboardItensResponse>
+    public class GetTicketsByCategoryRequestHandler : IRequestHandler<GetTicketsByCategoryRequest, DashboardItensResponse>
     {
         private readonly Func<Task<IDbConnection>> _openConnectionAsync;
 
-        public GetTicketsByTypeRequestHandler(Func<Task<IDbConnection>> openConnectionAsync)
+        public GetTicketsByCategoryRequestHandler(Func<Task<IDbConnection>> openConnectionAsync)
         {
             _openConnectionAsync = openConnectionAsync;
         }
 
         public async Task<DashboardItensResponse> Handle(GetTicketsByCategoryRequest request, CancellationToken cancellationToken)
         {
-            var sql = @"SELECT Type Label, count(1) Value 
+            var sql = @"SELECT Category Label, count(1) Value 
 FROM TicketReport 
 WHERE FinishDate BETWEEN @startRangeDate and @endRangeDate
-GROUP BY type   
+GROUP BY category
 ORDER BY Value DESC";
 
             var parameters = new

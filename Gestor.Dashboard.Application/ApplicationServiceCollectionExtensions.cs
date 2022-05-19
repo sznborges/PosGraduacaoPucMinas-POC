@@ -1,4 +1,6 @@
-﻿using Gestor.Dashboard.Application.Requests.GetTicketsByType;
+﻿using FluentValidation;
+using Gestor.Dashboard.Application.Requests.GetTicketsByType;
+using Gestor.Dashboard.Application.Validators;
 using MediatR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -11,8 +13,12 @@ namespace Gestor.Dashboard.Application
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddMediatR(typeof(GetTicketsByTypeRequest));
+            services.AddMediatR(typeof(GetTicketsByCategoryRequest));
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
             services.AddSqlServerConnection(configuration.GetConnectionString("SqlServer"));
+
+            AssemblyScanner.FindValidatorsInAssembly(typeof(GetTicketsByCategoryRequest).Assembly)
+              .ForEach(item => services.AddScoped(item.InterfaceType, item.ValidatorType));
 
             return services;
         }

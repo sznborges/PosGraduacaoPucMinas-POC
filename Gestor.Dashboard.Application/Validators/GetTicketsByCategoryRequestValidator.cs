@@ -1,0 +1,8 @@
+﻿using Gestor.Dashboard.Application.Requests.GetTicketsByType;
+
+namespace Gestor.Dashboard.Application.Validators
+{
+    public class GetTicketsByCategoryRequestValidator : BaseValidator<GetTicketsByCategoryRequest>
+    {
+    }
+}

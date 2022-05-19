@@ -17,7 +17,13 @@ namespace Gestor.Dashboard.Api.Controllers
         }
 
         [HttpGet("types")]
-        public async Task<DashboardItensResponse> GetByType([FromQuery] GetTicketsByTypeRequest request)
+        public async Task<DashboardItensResponse> GetByType([FromQuery] GetTicketsByCategoryRequest request)
+        {
+            return await _mediator.Send(request);
+        }
+
+        [HttpGet("categories")]
+        public async Task<DashboardItensResponse> GetByCategory([FromQuery] GetTicketsByCategoryRequest request)
         {
             return await _mediator.Send(request);
         }
