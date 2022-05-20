@@ -1,3 +1,4 @@
+using Gestor.Dashboard.Api.Middleware;
 using Gestor.Dashboard.Application;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,5 +17,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseMiddleware<ExceptionMiddleware>();
 
 app.Run();
