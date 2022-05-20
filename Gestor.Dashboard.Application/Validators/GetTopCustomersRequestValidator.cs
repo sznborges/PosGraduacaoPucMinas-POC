@@ -7,8 +7,7 @@ namespace Gestor.Dashboard.Application.Validators
     {
         public GetTopCustomersRequestValidator()
         {
-            RuleFor(x => x.Limit)
-                .GreaterThan(0);
+
         }
     }
 }

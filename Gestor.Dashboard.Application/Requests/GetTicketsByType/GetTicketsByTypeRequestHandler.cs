@@ -16,7 +16,7 @@ namespace Gestor.Dashboard.Application.Requests.GetTicketsByType
 
         public async Task<DashboardItensResponse> Handle(GetTicketsByCategoryRequest request, CancellationToken cancellationToken)
         {
-            var sql = @"SELECT Type Label, count(1) Value 
+            var sql = @$"SELECT TOP {request.Limit} Type Label, count(1) Value 
 FROM TicketReport 
 WHERE FinishDate BETWEEN @startRangeDate and @endRangeDate
 GROUP BY type   

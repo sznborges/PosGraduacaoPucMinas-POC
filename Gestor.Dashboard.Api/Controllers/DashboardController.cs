@@ -39,5 +39,11 @@ namespace Gestor.Dashboard.Api.Controllers
         {
             return await _mediator.Send(request);
         }
+
+        [HttpGet("states")]
+        public async Task<DashboardItensResponse> GetTopCustomers([FromQuery] GetTicketsByStateRequest request)
+        {
+            return await _mediator.Send(request);
+        }
     }
 }

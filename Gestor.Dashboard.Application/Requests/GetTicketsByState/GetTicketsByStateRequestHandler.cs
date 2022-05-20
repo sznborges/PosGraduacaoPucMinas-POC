@@ -6,21 +6,21 @@ using System.Data;
 
 namespace Gestor.Dashboard.Application.Requests.GetTicketsByCategory
 {
-    public class GetTicketsByCityRequestHandler : IRequestHandler<GetTicketsByCityRequest, DashboardItensResponse>
+    public class GetTicketsByStateRequestHandler : IRequestHandler<GetTicketsByStateRequest, DashboardItensResponse>
     {
         private readonly Func<Task<IDbConnection>> _openConnectionAsync;
 
-        public GetTicketsByCityRequestHandler(Func<Task<IDbConnection>> openConnectionAsync)
+        public GetTicketsByStateRequestHandler(Func<Task<IDbConnection>> openConnectionAsync)
         {
             _openConnectionAsync = openConnectionAsync;
         }
 
-        public async Task<DashboardItensResponse> Handle(GetTicketsByCityRequest request, CancellationToken cancellationToken)
+        public async Task<DashboardItensResponse> Handle(GetTicketsByStateRequest request, CancellationToken cancellationToken)
         {
-            var sql = @$"SELECT TOP {request.Limit} City Label, count(1) Value 
+            var sql = @$"SELECT TOP {request.Limit} state Label, count(1) Value 
 FROM TicketReport 
 WHERE FinishDate BETWEEN @startRangeDate and @endRangeDate
-GROUP BY city
+GROUP BY state
 ORDER BY Value DESC";
 
             var parameters = new

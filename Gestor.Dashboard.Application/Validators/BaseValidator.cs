@@ -14,6 +14,9 @@ namespace Gestor.Dashboard.Application.Validators
             RuleFor(x => x.EndRangeDate)
                 .Must(ValidDate)
                 .WithMessage("'EndRangeDate' is required");
+
+            RuleFor(x => x.Limit)
+                .GreaterThan(0);
         }
 
         private bool ValidDate(DateTime date)

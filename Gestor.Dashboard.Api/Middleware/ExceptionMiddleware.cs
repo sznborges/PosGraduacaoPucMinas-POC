@@ -34,7 +34,7 @@ namespace Gestor.Dashboard.Api.Middleware
             await context.Response.WriteAsync(new ErrorDetailsResponse()
             {
                 StatusCode = context.Response.StatusCode,
-                Message = exception.Message
+                Message = exception.Errors.FirstOrDefault().ErrorMessage
             }.ToString());
         }
 

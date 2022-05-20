@@ -3,7 +3,7 @@ using MediatR;
 
 namespace Gestor.Dashboard.Application.Requests.GetTicketsByType
 {
-    public class GetTopCustomersRequest : DashboardRequestBase, IRequest<DashboardItensResponse>
+    public class GetTicketsByStateRequest : DashboardRequestBase, IRequest<DashboardItensResponse>
     {
     }
 }
