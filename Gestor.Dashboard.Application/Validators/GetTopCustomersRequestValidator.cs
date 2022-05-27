@@ -5,9 +5,5 @@ namespace Gestor.Dashboard.Application.Validators
 {
     public class GetTopCustomersRequestValidator : BaseValidator<GetTopCustomersRequest>
     {
-        public GetTopCustomersRequestValidator()
-        {
-
-        }
     }
 }

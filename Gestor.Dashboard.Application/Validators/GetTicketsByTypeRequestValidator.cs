@@ -2,7 +2,7 @@
 
 namespace Gestor.Dashboard.Application.Validators
 {
-    public class GetTicketsByTypeRequestValidator : BaseValidator<GetTicketsByCategoryRequest>
+    public class GetTicketsByTypeRequestValidator : BaseValidator<GetTicketsByTypeRequest>
     {
     }
 }

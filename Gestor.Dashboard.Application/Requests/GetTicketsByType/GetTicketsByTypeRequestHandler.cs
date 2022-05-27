@@ -5,7 +5,7 @@ using System.Data;
 
 namespace Gestor.Dashboard.Application.Requests.GetTicketsByType
 {
-    public class GetTicketsByTypeRequestHandler : IRequestHandler<GetTicketsByCategoryRequest, DashboardItensResponse>
+    public class GetTicketsByTypeRequestHandler : IRequestHandler<GetTicketsByTypeRequest, DashboardItensResponse>
     {
         private readonly Func<Task<IDbConnection>> _openConnectionAsync;
 
@@ -14,7 +14,7 @@ namespace Gestor.Dashboard.Application.Requests.GetTicketsByType
             _openConnectionAsync = openConnectionAsync;
         }
 
-        public async Task<DashboardItensResponse> Handle(GetTicketsByCategoryRequest request, CancellationToken cancellationToken)
+        public async Task<DashboardItensResponse> Handle(GetTicketsByTypeRequest request, CancellationToken cancellationToken)
         {
             var sql = @$"SELECT TOP {request.Limit} Type Label, count(1) Value 
 FROM TicketReport 
