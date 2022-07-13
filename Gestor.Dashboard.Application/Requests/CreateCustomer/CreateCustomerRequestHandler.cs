@@ -16,39 +16,32 @@ namespace Gestor.Dashboard.Application.Requests.CreateCustomer
 
         public async Task<CreateCustomerResponse> Handle(CreateCustomerRequest request, CancellationToken cancellationToken)
         {
-            try
-            {
-                var sql = @$"insert into Customer (Id, Name, Email, DDD, Phone, CPF) Output Inserted.Id 
+            var sql = @$"insert into Customer (Id, Name, Email, DDD, Phone, CPF) Output Inserted.Id 
 values
     (@Id, @Name, @Email, @Ddd, @Phone, @Cpf)";
 
-                var parameters = new
-                {
-                    Id = Guid.NewGuid(),
-                    Name = request.Name,
-                    Email = request.Email,
-                    Ddd = request.DDD,
-                    Phone = request.Phone,
-                    Cpf = request.CPF
-                };
-
-                var command = new CommandDefinition(sql, parameters);
-
-                using (var connection = await _openConnectionAsync())
-                {
-                    var id = await connection.QueryFirstOrDefaultAsync<Guid>(command);
-
-                    return new CreateCustomerResponse
-                    {
-                        Id = id
-                    };
-                }
-            }
-            catch (Exception ex)
+            var parameters = new
             {
+                Id = Guid.NewGuid(),
+                Name = request.Name,
+                Email = request.Email,
+                Ddd = request.DDD,
+                Phone = request.Phone,
+                Cpf = request.CPF.Replace(".", "").Replace("-", "")
+        };
 
-                throw;
+            var command = new CommandDefinition(sql, parameters);
+
+            using (var connection = await _openConnectionAsync())
+            {
+                var id = await connection.QueryFirstOrDefaultAsync<Guid>(command);
+
+                return new CreateCustomerResponse
+                {
+                    Id = id
+                };
             }
+
         }
     }
 }

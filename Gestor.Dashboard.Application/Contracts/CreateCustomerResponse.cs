@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace Gestor.Dashboard.Application.Contracts
 {
     public class CreateCustomerResponse
     {
+        /// <summary>
+        /// Customer's Id
+        /// </summary>
         public Guid Id { get; set; }
     }
 }

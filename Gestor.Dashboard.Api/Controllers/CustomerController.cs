@@ -1,6 +1,5 @@
 using Gestor.Dashboard.Application.Contracts;
 using Gestor.Dashboard.Application.Requests.CreateCustomer;
-using Gestor.Dashboard.Application.Requests.GetTicketsByType;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
