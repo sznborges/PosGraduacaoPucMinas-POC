@@ -1,7 +1,6 @@
-﻿
-using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics.CodeAnalysis;
 
-namespace Gestor.Dashboard.Application.Contracts
+namespace Gestor.Dashboard.Application.Model
 {
     [ExcludeFromCodeCoverage]
     public class DashboardItem

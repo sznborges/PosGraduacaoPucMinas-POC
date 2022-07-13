@@ -1,5 +1,5 @@
 ﻿using Dapper;
-using Gestor.Dashboard.Application.Contracts;
+using Gestor.Dashboard.Application.Model;
 using Gestor.Dashboard.Application.Requests.GetTicketsByType;
 using Moq;
 using Moq.Dapper;

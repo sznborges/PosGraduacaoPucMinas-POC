@@ -1,4 +1,5 @@
 ﻿
+using Gestor.Dashboard.Application.Model;
 using System.Diagnostics.CodeAnalysis;
 
 namespace Gestor.Dashboard.Application.Contracts

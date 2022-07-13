@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Gestor.Dashboard.Application.Contracts
 {
-    internal class User
+    public class CreateCustomerResponse
     {
+        public Guid Id { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using Gestor.Dashboard.Application.Contracts;
+using Gestor.Dashboard.Application.Model;
 using MediatR;
 using System.Data;
 
