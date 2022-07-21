@@ -10,6 +10,23 @@ namespace Gestor.Dashboard.Application.Validators
     {
         public static bool IsCpf(string cpf)
         {
+            if (cpf is null)
+                return false;
+
+            var numerosInvalidos = new List<string>
+            {
+                "00000000000",
+                "11111111111",
+                "22222222222",
+                "33333333333",
+                "44444444444",
+                "55555555555",
+                "66666666666",
+                "77777777777",
+                "88888888888",
+                "99999999999"
+            };
+
             int[] multiplicador1 = new int[9] { 10, 9, 8, 7, 6, 5, 4, 3, 2 };
             int[] multiplicador2 = new int[10] { 11, 10, 9, 8, 7, 6, 5, 4, 3, 2 };
             string tempCpf;
@@ -20,6 +37,10 @@ namespace Gestor.Dashboard.Application.Validators
             cpf = cpf.Replace(".", "").Replace("-", "");
             if (cpf.Length != 11)
                 return false;
+
+            if (numerosInvalidos.Contains(cpf))
+                return false;
+
             tempCpf = cpf.Substring(0, 9);
             soma = 0;
 
