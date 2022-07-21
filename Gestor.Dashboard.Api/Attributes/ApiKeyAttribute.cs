@@ -35,7 +35,7 @@ namespace Gestor.Dashboard.Api.Attributes
         {
             return new ContentResult()
             {
-                StatusCode = 403,
+                StatusCode = 401,
                 Content = "Not Authorized"
             };
         }
