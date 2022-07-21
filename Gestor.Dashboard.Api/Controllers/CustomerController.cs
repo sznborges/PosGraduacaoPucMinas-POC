@@ -1,3 +1,4 @@
+using Gestor.Dashboard.Api.Attributes;
 using Gestor.Dashboard.Application.Contracts;
 using Gestor.Dashboard.Application.Requests.CreateCustomer;
 using MediatR;
@@ -8,6 +9,7 @@ namespace Gestor.Dashboard.Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [ApiKey]
     public class CustomerController : ControllerBase
     {
         private readonly IMediator _mediator;
