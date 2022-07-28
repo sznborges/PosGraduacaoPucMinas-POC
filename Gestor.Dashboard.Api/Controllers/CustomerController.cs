@@ -31,6 +31,18 @@ namespace Gestor.Dashboard.Api.Controllers
             return await _mediator.Send(request);
         }
 
-        
+        /// <summary>
+        /// Search customers
+        /// </summary>
+        [SwaggerResponse(StatusCodes.Status200OK, Type = typeof(SearchCustomerResponse))]
+        [SwaggerResponse(StatusCodes.Status400BadRequest)]
+        [SwaggerResponse(StatusCodes.Status500InternalServerError)]
+        [HttpGet("search")]
+        public async Task<SearchCustomerResponse> SearchCustomers([FromQuery] SearchCustomerRequest request)
+        {
+            return await _mediator.Send(request);
+        }
+
+
     }
 }
